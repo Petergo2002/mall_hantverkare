@@ -65,14 +65,30 @@ I `areas`-arrayen radar du därefter upp de specifika orter, städer eller kommu
 ```
 
 ### 4. Bygg (SSG - Static Site Generation)
-När du publicerar (eller kör `npm run build`), kommer Next.js att loopa genom **alla tjänster** *gånger* **alla områden** och förgenerera statiska, blixtsnabba och indexerbara HTML-sidor. 
+När du publicerar (eller kör `npm run build`), kommer Next.js att loopa genom **alla tjänster** *gånger* **alla områden** och förgenerera statiska, blixtsnabba och indexerbara HTML-sidor.
 
 För varje nytt område du lägger till i konfigurationen, skapas automatiskt nya målsidor för varje tjänst i arrayen. 
 
 ```bash
 npm install
+npm run lint
 npm run build
 npm start
+```
+
+---
+
+## ✅ Tech Status (Mars 2026)
+
+- Next.js: `16.x`
+- React: `19.x`
+- ESLint: Flat config (`eslint.config.mjs`)
+
+Notera: I Next.js 16 används inte längre `next lint`.  
+Lint körs via:
+
+```bash
+npm run lint
 ```
 
 ---
