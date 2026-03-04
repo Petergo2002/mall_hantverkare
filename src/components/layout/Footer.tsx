@@ -35,18 +35,24 @@ export function Footer() {
                     </div>
 
                     <div>
-                        <h4 className="font-semibold mb-4">Områden</h4>
+                        <h4 className="font-semibold mb-4">Snabblänkar</h4>
                         <ul className="space-y-3">
-                            {siteConfig.areas.map((area) => (
-                                <li key={area.slug}>
-                                    <Link
-                                        href={`/omraden#${area.slug}`}
-                                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                        {area.name}
-                                    </Link>
-                                </li>
-                            ))}
+                            <li>
+                                <Link
+                                    href="/om-oss"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                >
+                                    Om Oss
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/kontakt"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                >
+                                    Kontakt
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

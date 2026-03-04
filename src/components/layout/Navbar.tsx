@@ -29,9 +29,6 @@ export function Navbar() {
                     <Link href="/tjanster" className="text-sm font-medium hover:text-primary/70 transition-colors">
                         Tjänster
                     </Link>
-                    <Link href="/omraden" className="text-sm font-medium hover:text-primary/70 transition-colors">
-                        Områden
-                    </Link>
                     <Link
                         href="/kontakt"
                         className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
@@ -81,13 +78,6 @@ export function Navbar() {
                             onClick={() => setIsOpen(false)}
                         >
                             Tjänster
-                        </Link>
-                        <Link
-                            href="/omraden"
-                            className="text-lg font-medium py-2 border-b border-border/40"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Områden
                         </Link>
                         <Link
                             href="/kontakt"

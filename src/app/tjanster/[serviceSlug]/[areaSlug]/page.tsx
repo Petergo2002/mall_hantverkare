@@ -113,30 +113,31 @@ export default async function ProgrammaticLandingPage({ params }: Props) {
 
             {/* Landing Hero */}
             <section className="pt-8 pb-20 bg-background relative overflow-hidden">
-                <div className="container mx-auto px-4 max-w-5xl relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6 text-balance">
-                                {service.title} i <span className="text-muted-foreground">{area.name}</span>
+                <div className="container mx-auto px-4 max-w-6xl relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        <div className="w-full min-w-0 pr-0 lg:pr-8">
+                            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-tight mb-6 leading-[1.1] break-words hyphens-auto">
+                                {service.title} i <br className="hidden md:block" />
+                                <span className="text-muted-foreground">{area.name}</span>
                             </h1>
-                            <p className="text-lg text-muted-foreground leading-relaxed mb-8 text-balance">
+                            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-[42rem]">
                                 Bor du i {area.name} och funderar på att förnya ditt hem? Våra lokala hantverkare är specialister på {service.title.toLowerCase()} och erbjuder tjänster med totalentreprenad.
                                 Självklart anpassar vi oss efter dina önskemål.
                             </p>
 
-                            <ul className="space-y-4 mb-10">
+                            <ul className="space-y-5 mb-10">
                                 {siteConfig.programmatic.landing.perks.map((perk, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-muted-foreground">
-                                        <ShieldCheck className="w-5 h-5 text-primary" />
-                                        {perk}
+                                    <li key={i} className="flex items-start gap-4 text-muted-foreground font-medium text-lg">
+                                        <ShieldCheck className="w-6 h-6 text-primary mt-0.5 shrink-0" />
+                                        <span>{perk}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
-                        <div className="relative">
-                            <div className="absolute -inset-4 bg-primary/5 rounded-[2rem] blur-xl pointer-events-none" />
-                            <div className="relative">
+                        <div className="relative w-full max-w-md mx-auto lg:max-w-full min-w-0 mt-8 lg:mt-0">
+                            <div className="absolute -inset-2 md:-inset-4 bg-primary/10 rounded-[2rem] md:rounded-[2.5rem] blur-2xl pointer-events-none" />
+                            <div className="relative shadow-2xl rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden bg-background">
                                 <ContactForm />
                             </div>
                         </div>

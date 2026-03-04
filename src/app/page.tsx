@@ -8,7 +8,16 @@ import { FAQ } from "@/components/ui/FAQ";
 import { LocalBusinessSchema } from "@/components/seo/SchemaMarkup";
 import { siteConfig } from "@/config/siteConfig";
 import Link from "next/link";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Hem",
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
@@ -18,11 +27,11 @@ export default function Home() {
       <Hero />
       <TrustIndicators />
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" aria-labelledby="home-services-heading">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
+              <h2 id="home-services-heading" className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
                 {siteConfig.home.services.title}
               </h2>
               <p className="text-muted-foreground text-lg text-balance">
@@ -51,38 +60,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-muted/50 py-24 border-y border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
-              {siteConfig.home.areas.title}
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              {siteConfig.home.areas.description}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {siteConfig.areas.map((area) => (
-                <Link
-                  key={area.slug}
-                  href={`/omraden#${area.slug}`}
-                  className="inline-flex items-center gap-2 bg-background border border-border/50 rounded-full px-6 py-3 font-medium shadow-subtle hover:scale-105 active:scale-95 transition-all"
-                >
-                  <MapPin className="w-5 h-5 text-primary" />
-                  {area.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden" aria-labelledby="home-about-heading">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
+              <h2 id="home-about-heading" className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
                 {siteConfig.home.aboutPreview.title}
               </h2>
               <p className="text-lg text-primary-foreground/80 leading-relaxed mb-8 text-balance">
@@ -110,10 +94,10 @@ export default function Home() {
 
       <Testimonials />
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" aria-labelledby="home-faq-heading">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
+            <h2 id="home-faq-heading" className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
               {siteConfig.home.faq.title}
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -124,13 +108,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-muted/50 border-t border-border/50 relative overflow-hidden">
+      <section className="py-24 bg-muted/50 border-t border-border/50 relative overflow-hidden" aria-labelledby="home-cta-heading">
         <div className="absolute top-0 left-1/4 -translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div className="flex flex-col justify-center">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
+              <h2 id="home-cta-heading" className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
                 {siteConfig.home.cta.title}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-10 text-balance">
