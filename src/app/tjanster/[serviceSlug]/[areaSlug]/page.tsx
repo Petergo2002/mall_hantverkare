@@ -8,14 +8,15 @@ import { ContactForm } from "@/components/ui/ContactForm";
 import { ChevronRight, ShieldCheck } from "lucide-react";
 
 type Props = {
-    params: { serviceSlug: string; areaSlug: string };
+    params: Promise<{ serviceSlug: string; areaSlug: string }>;
 };
 
 export async function generateMetadata(
     { params }: Props
 ): Promise<Metadata> {
-    const service = siteConfig.services.find((s) => s.slug === params.serviceSlug);
-    const area = siteConfig.areas.find((a) => a.slug === params.areaSlug);
+    const { serviceSlug, areaSlug } = await params;
+    const service = siteConfig.services.find((s) => s.slug === serviceSlug);
+    const area = siteConfig.areas.find((a) => a.slug === areaSlug);
 
     if (!service || !area) {
         return { title: "Sidan hittades inte" };
@@ -41,9 +42,10 @@ export async function generateStaticParams() {
     return paths;
 }
 
-export default function ProgrammaticLandingPage({ params }: Props) {
-    const service = siteConfig.services.find((s) => s.slug === params.serviceSlug);
-    const area = siteConfig.areas.find((a) => a.slug === params.areaSlug);
+export default async function ProgrammaticLandingPage({ params }: Props) {
+    const { serviceSlug, areaSlug } = await params;
+    const service = siteConfig.services.find((s) => s.slug === serviceSlug);
+    const area = siteConfig.areas.find((a) => a.slug === areaSlug);
 
     if (!service || !area) {
         notFound();

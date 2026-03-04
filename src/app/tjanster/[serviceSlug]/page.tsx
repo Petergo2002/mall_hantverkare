@@ -6,13 +6,14 @@ import { ServiceSchema } from "@/components/seo/SchemaMarkup";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 
 type Props = {
-    params: { serviceSlug: string };
+    params: Promise<{ serviceSlug: string }>;
 };
 
 export async function generateMetadata(
     { params }: Props
 ): Promise<Metadata> {
-    const service = siteConfig.services.find((s) => s.slug === params.serviceSlug);
+    const { serviceSlug } = await params;
+    const service = siteConfig.services.find((s) => s.slug === serviceSlug);
 
     if (!service) {
         return { title: "Tjänst hittades inte" };
@@ -31,8 +32,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function ServicePage({ params }: Props) {
-    const service = siteConfig.services.find((s) => s.slug === params.serviceSlug);
+export default async function ServicePage({ params }: Props) {
+    const { serviceSlug } = await params;
+    const service = siteConfig.services.find((s) => s.slug === serviceSlug);
 
     if (!service) {
         notFound();

@@ -24,7 +24,10 @@ Systemet injicerar automatiskt:
 
 När du använder denna mall för en ny kund behöver du i princip bara modifiera **en** enda fil: `src/config/siteConfig.ts`.
 
-För snabb onboarding av en ny kund, använd guiden i `docs/NY-KUND.md`.
+För snabb onboarding av en ny kund, använd:
+
+- `docs/NY-KUND.md` for att byta befintligt content (ingen ny struktur/inga nya listobjekt).
+- `docs/UTOKA-TJANSTER-OMRADEN.md` for att lagga till fler tjanster/omraden.
 
 ### 1. Uppdatera Företagsinformation
 Öppna `src/config/siteConfig.ts` och ändra företagets namn, kontaktuppgifter, beskrivning och logik för sitens generella utseende.
