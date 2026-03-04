@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Programmatic SEO Service Business Template
 
-## Getting Started
+Detta är en Next.js (App Router) och Tailwind CSS-mall designad för tjänsteföretag (ex. Bygg, Städ, VVS) med extremt fokus på **Hög Konvertering**, **Lokal SEO**, och **Programmatic SEO Skalbarhet**.
 
-First, run the development server:
+Designen är premium, minimalistisk (Apple-style), med mycket whitespace, stark typografi och tydliga Call-to-Actions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Strategin: Programmatic SEO
+
+Det primära syftet med denna mall är att låta dig snabbt lansera en konverteringsoptimerad landningssida för en ny kund, och sedan **programmatiskt** och automatiskt generera hundratals lokala landningssidor för att driva in "long-tail" sökordstrafik.
+
+Mallen kombinerar varje Tjänst (ex. `Kök`, `Badrum`) med alla Områden (ex. `Stockholm`, `Solna`) och genererar unika sidor (`/tjanster/kok/stockholm`, `/tjanster/kok/solna`, etc.).
+
+Systemet injicerar automatiskt:
+- Målanpassade H1, titlar och metabeskrivningar för varje unik kombination av tjänst och område.
+- Lokalanpassade FAQ-frågor för starkare kontext i området.
+- `LocalBusiness`, `Service` och `FAQPage` Schema.org JSON-LD-markup på alla relevanta sidor.
+- Dynamiska länkar till sitemap.xml.
+
+---
+
+## 🛠 Setup & Konfigurering (För en ny kund)
+
+När du använder denna mall för en ny kund behöver du i princip bara modifiera **en** enda fil: `src/config/siteConfig.ts`.
+
+För snabb onboarding av en ny kund, använd guiden i `docs/NY-KUND.md`.
+
+### 1. Uppdatera Företagsinformation
+Öppna `src/config/siteConfig.ts` och ändra företagets namn, kontaktuppgifter, beskrivning och logik för sitens generella utseende.
+
+```typescript
+export const siteConfig = {
+  name: "Kundens Företagsnamn AB",
+  description: "Professionella tjänster...",
+  contact: {
+    phone: "070-123 45 67",
+    email: "info@kund.se",
+    address: "Stockholm, Sverige",
+  },
+  // ...
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Definiera Tjänster
+I `services`-arrayen i samma fil, lägger du till alla de olika tjänster kunden utför:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```typescript
+{
+  title: "Köksrenovering",
+  slug: "koksrenovering",
+  description: "Förverkliga ditt drömkök med våra erfarna hantverkare.",
+  icon: "kitchen"
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Definiera Arbetsområden
+I `areas`-arrayen radar du därefter upp de specifika orter, städer eller kommuner kunden accepterar jobb inom:
 
-## Learn More
+```typescript
+{
+  name: "Nacka",
+  slug: "nacka"
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Bygg (SSG - Static Site Generation)
+När du publicerar (eller kör `npm run build`), kommer Next.js att loopa genom **alla tjänster** *gånger* **alla områden** och förgenerera statiska, blixtsnabba och indexerbara HTML-sidor. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+För varje nytt område du lägger till i konfigurationen, skapas automatiskt nya målsidor för varje tjänst i arrayen. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design-systemet
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mallen är konfigurerad i `tailwind.config.ts` med globala CSS-variabler i `globals.css`. 
+
+Byggd på de senaste standarderna med färgkonsekvens från `hsl()` värden. Vill du tona designen för en specifik kund uppdaterar du bara primary och secondary färgvariablerna i `globals.css`. Layout-filerna är redan optimerade för mobil-stöd med "sticky" call-to-action-knappar på telefonen.
+
+### Innehållsstruktur (Komponenter inkluderade)
+- Hero (Startsida)
+- Trust Indicators (Förtroendebyggare som omdömen & etableringsår)
+- Service Cards
+- FAQ (Accordion format)
+- Contact Form
+- Testimonials
+- Programmatic Layout (dynamisk textstruktur för lokala områdessidor)
+
+Mycket nöje med mallen! Det här är grunden till ett oerhört kraftfullt SEO-maskineri.
